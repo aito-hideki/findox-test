@@ -2,7 +2,7 @@
   <q-btn
     class="documents-viewer-options"
     color="primary"
-    label="Options"
+    label="Toggle Columns"
     unelevated
     @click.stop
   >

@@ -49,7 +49,7 @@ export const DocumentFields = [
   //   label: 'Archived',
   //   value: ''
   // }
-]
+].sort((a, b) => a.label.localeCompare(b.label))
 
 export const DocumentViewerHeader: any[] = [
   {
