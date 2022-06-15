@@ -7,7 +7,6 @@ declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     DocumentsViewer: typeof import('./src/components/DocumentsViewer/index.vue')['default']
     DocumentsViewerFilter: typeof import('./src/components/DocumentsViewer/Filter.vue')['default']
-    DocumentsViewerIndustryFilter: typeof import('./src/components/DocumentsViewer/IndustryFilter.vue')['default']
     DocumentsViewerOptions: typeof import('./src/components/DocumentsViewer/Options.vue')['default']
   }
 }

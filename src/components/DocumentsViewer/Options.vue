@@ -58,7 +58,53 @@
   </q-btn>
 </template>
 
-<script setup lang="ts">
+<script lang="ts">
+import { defineComponent, PropType } from 'vue'
+
+interface Field {
+  label: string,
+  value: string
+}
+
+export default defineComponent({
+  props: {
+    visible: {
+      type: Array,
+      default: () => []
+    },
+    fields: {
+      type: Array as PropType<Field[]>,
+      default: () => []
+    }
+  },
+  emits: ['update:visible'],
+  data: () => ({
+    visibleFields: [] as string[]
+  }),
+  watch: {
+    visible: {
+      handler: 'feedData',
+      immediate: true
+    }
+  },
+  methods: {
+    feedData () {
+      this.visibleFields = [...this.visible as string[]]
+    },
+    save () {
+      this.$emit('update:visible', [...this.visibleFields])
+    },
+    cancel () {
+      this.visibleFields = [...this.visible as string[]]
+    },
+    reset () {
+      this.$emit('update:visible', [...this.fields.map(({ value }: any) => value)])
+    }
+  }
+})
+</script>
+
+<!-- <script setup lang="ts">
 import { ref, watch } from 'vue'
 
 const emit = defineEmits<{
@@ -90,7 +136,7 @@ const reset = () => {
 watch(() => props.visible, () => {
   visibleFields.value = [...props.visible]
 }, { immediate: true })
-</script>
+</script> -->
 
 <style lang="scss">
 .documents-viewer-options__menu {
